@@ -1,0 +1,28 @@
+<div class="" #chartdiv>
+  <h2 style="align-text:center;"> Visualization of facebook posts data </h2>
+  <p>By default data is shown after grouping by date and having sum of reactions and comments per day </p>
+  <p>Check this box to get all data visualization without removing multiple date entries</p>
+  <div class="checkbox-div">
+    <label for="checkBox" style="color: red;">Toggle to {{isChecked ? "Data per DAY View": "All Data View"}} ==></label>
+    <input type="checkbox" id="checkBox" (change)="checkBoxClicked($event)"/>
+  </div>
+  <p>Graph is zoomable and bullets points below the chart will show only lines when clicked</p>
+  <!-- <p>length of data displayed: {{jsonData.length}}</p>  -->
+  <div class="row">
+    <div class="col-4" *ngIf="isChecked">
+      <button class="" (click)="changeFilterClicked(0)">previous </button>
+    </div>
+    <div class="col-4" *ngIf="isChecked">
+      <select ng-model="selectedName"  (change)="graphDataListChangeClick($event)" (ngModel)="graphDataLimit" >
+        <option value="200">200</option>
+        <option value="100" selected >100</option>
+        <option value="50">50</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+    <div class="col-4" *ngIf="isChecked">
+      <button class="" (click)="changeFilterClicked(1)">next</button>
+    </div>
+  </div>
+  <div id="chartdiv"></div>
+</div>
